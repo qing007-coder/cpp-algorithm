@@ -18,17 +18,17 @@ public:
             return false;
         } 
         
-        ListNode *fast = head->next, *slow = head;
+        ListNode *fast = head, *slow = head;
 
-        while(fast != slow) {
-            if (fast == nullptr || fast->next == nullptr) {
-                return false;
-            }
-
+        while(fast != nullptr && fast->next != nullptr) {
             fast = fast->next->next;
             slow = slow->next;
+
+            if (slow == fast) {
+                return true;
+            }
         }
 
-        return true;
+        return false;
     }
 };
